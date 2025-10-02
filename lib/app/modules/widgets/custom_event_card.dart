@@ -10,6 +10,9 @@ class CustomEventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    DateTime internationalTime = eventDate;
+    DateTime datetime = internationalTime.toLocal();
+
     return Container(
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -65,7 +68,7 @@ class CustomEventCard extends StatelessWidget {
                     Icon(Icons.alarm,size:screenWidth*15/360,),
                     SizedBox(width: 5,),
                     Text(
-                      'Start Time: ${DateFormat.jm().format(eventDate)}',
+                      'Start Time: ${DateFormat.jm().format(datetime)}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,

@@ -35,7 +35,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                     },
                     child: Icon(Icons.arrow_back),
                   ),
-                  SizedBox(width: 8), // 👈 instead of spacing
+                  SizedBox(width: 8),
                   SizedBox(
                     width: screenWidth * 300 / 360,
                     child: Text(
@@ -100,7 +100,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                                 ),
                                 Switch(
                                   value: controller.is12Hour.value,
-                                  activeColor: Colors.red,
+                                  activeThumbColor: Colors.red,
                                   onChanged: (value) {
                                     controller.set12Hour();
                                   },
@@ -138,7 +138,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                                 ),
                                 Switch(
                                   value: controller.is3Hour.value,
-                                  activeColor: Colors.red,
+                                  activeThumbColor: Colors.red,
                                   onChanged: (value) {
                                     controller.set3Hour();
                                   },
@@ -176,7 +176,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                                 ),
                                 Switch(
                                   value: controller.is1Hour.value,
-                                  activeColor: Colors.red,
+                                  activeThumbColor: Colors.red,
                                   onChanged: (value) {
                                     controller.set1Hour();
                                   },
@@ -225,7 +225,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomEventCard(
-                      eventDate: event.createdAt,
+                      eventDate: event.startedAt,
                       eventLocation: event.location,
                       tvName: event.tvBroadcastChanel,
                     ),

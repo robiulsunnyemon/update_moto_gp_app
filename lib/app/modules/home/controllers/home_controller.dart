@@ -162,7 +162,7 @@ class HomeController extends GetxController {
 
 
 
-  final RxList<RaceModel> raceList = <RaceModel>[].obs;
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 
@@ -203,21 +203,6 @@ class HomeController extends GetxController {
     }
   }
 
-
-
-
-  // Future<void> fetchRaces() async {
-  //   try {
-  //     _firestore.collection('race').snapshots().listen((QuerySnapshot snapshot) {
-  //       raceList.assignAll(
-  //         snapshot.docs.map((doc) => RaceModel.fromFirestore(doc)).toList(),
-  //       );
-  //
-  //     });
-  //   } catch (e) {
-  //     Get.snackbar('Error', 'Failed to fetch races: $e');
-  //   }
-  // }
 
 
   Future<void> submitRaceRequest(String raceName) async {
@@ -261,7 +246,7 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
-    raceList.clear();
+    allRacesList.clear();
     super.onClose();
   }
 

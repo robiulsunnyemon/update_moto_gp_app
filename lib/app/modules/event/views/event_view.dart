@@ -56,7 +56,7 @@ class EventView extends GetView<EventController> {
                     child: GestureDetector(
                       onTap: () {},
                       child: CustomEventCard(
-                        eventDate: eventData.createdAt,
+                        eventDate: eventData.startedAt,
                         eventLocation:eventData.location,
                         tvName: eventData.tvBroadcastChanel,
                       ),

@@ -20,7 +20,7 @@ class RacingDetailsController extends GetxController {
   RxBool is3Hour = false.obs;
   RxBool is1Hour = false.obs;
 
-  final events = <EventModel>[].obs;
+
   final isLoading = false.obs;
 
   Future<void> _loadNotificationState() async {
@@ -101,9 +101,7 @@ class RacingDetailsController extends GetxController {
     super.onInit();
   }
 
-  Future<void> sendNotificationFastAPI({
-    required int hour,
-  }) async {
+  Future<void> sendNotificationFastAPI({required int hour,}) async {
     final String apiUrl =
         "$baseUrl/notifications/";
     String? fastAPIToken = await SharedPrefHelper.getToken();

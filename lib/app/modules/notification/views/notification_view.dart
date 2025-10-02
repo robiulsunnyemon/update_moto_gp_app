@@ -29,8 +29,10 @@ class NotificationView extends GetView<NotificationController> {
           padding: const EdgeInsets.all(8.0),
           itemCount: response.length,
           itemBuilder: (context, index) {
-            final notification = response[index];
-            String formatted = DateFormat('dd/MM/yyyy HH:mm').format(notification.createdAt.toLocal());
+            int i = response.length - index - 1;
+            final notification = response[i];
+            String formatted = DateFormat('dd/MM/yyyy hh:mm a')
+                .format(notification.createdAt.toLocal());
             return Card(
               color: Colors.white,
               child: ListTile(
