@@ -27,7 +27,7 @@ class EventView extends GetView<EventController> {
                 vertical: screenWidth * 15 / 360,
               ),
               child: Text(
-                'Upcoming Events',
+                'All Events',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: screenWidth * 24 / 360,
@@ -42,7 +42,7 @@ class EventView extends GetView<EventController> {
               return SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text("Upcoming Event is not available"),
+                  child: Text("Event is not available"),
                 ),
               );
             } else {
@@ -59,6 +59,7 @@ class EventView extends GetView<EventController> {
                         eventDate: eventData.startedAt,
                         eventLocation:eventData.location,
                         tvName: eventData.tvBroadcastChanel,
+                        radioName: eventData.radioBroadcastChanel,
                       ),
                     ),
                   );

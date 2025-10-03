@@ -11,7 +11,7 @@ class NotificationApiService {
     String? fastAPIToken = await SharedPrefHelper.getToken();
     print("fastApIToke: $fastAPIToken");
     final response = await http.get(
-        Uri.parse('$baseUrl/notification_box/'),
+        Uri.parse('$baseUrl/notification_box/user/me'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $fastAPIToken',

@@ -61,34 +61,6 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> _sendTokenToBackend(String token, String email) async {
-    const String apiUrl = "https://motogp.mtscorporate.com/api/users/register";
-
-    try {
-      final response = await http.post(
-        Uri.parse(apiUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'fcm_token': token,
-          'email': email,
-        }),
-      );
-
-      print(response.statusCode);
-      print(response.body);
-
-      if (response.statusCode == 200) {
-        print("FCM Token successfully sent to backend!");
-
-      } else {
-        print("Failed to send token: ${response.body}");
-      }
-    } catch (e) {
-      print("Error sending token to backend: $e");
-    }
-  }
-
-
 
 
 
@@ -109,8 +81,6 @@ class LoginController extends GetxController {
       print(response.body);
 
       if (response.statusCode == 201) {
-        print("FCM Token successfully sent to backend!");
-        Get.snackbar("Login Success", "FCM Token successfully sent to backend!");
         final decodedResponse=jsonDecode(response.body);
         print("decoded token: ${decodedResponse["access_token"]}");
         await SharedPrefHelper.saveToken(decodedResponse["access_token"]);

@@ -5,7 +5,8 @@ class CustomEventCard extends StatelessWidget {
   final String eventLocation;
   final DateTime eventDate;
   final String tvName;
-  const CustomEventCard({super.key, required this.eventLocation, required this.eventDate, required this.tvName});
+  final String radioName;
+  const CustomEventCard({super.key, required this.eventLocation, required this.eventDate, required this.tvName,required this.radioName});
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +86,22 @@ class CustomEventCard extends StatelessWidget {
                     SizedBox(width: 5,),
                     Text(
                       'TV: $tvName',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: screenWidth*10/360,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.radio,size:screenWidth*15/360,),
+                    SizedBox(width: 5,),
+                    Text(
+                      'Radio: $radioName',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,

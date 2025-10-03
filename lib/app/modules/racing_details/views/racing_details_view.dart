@@ -228,6 +228,7 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                       eventDate: event.startedAt,
                       eventLocation: event.location,
                       tvName: event.tvBroadcastChanel,
+                      radioName: event.radioBroadcastChanel,
                     ),
                   );
                 }, childCount: controller.selectedRace.value?.events.length),
