@@ -13,7 +13,7 @@ class NotificationView extends GetView<NotificationController> {
       appBar: AppBar(toolbarHeight: 120, title: const CustomAppbarTitle()),
       body: Obx(() {
         if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(color:  Color(0xFFDC2626),));
         }
 
         if (controller.errorMessage.isNotEmpty) {
@@ -25,30 +25,37 @@ class NotificationView extends GetView<NotificationController> {
           return const Center(child: Text('You have no notifications'));
         }
 
-        return ListView.builder(
-          padding: const EdgeInsets.all(8.0),
-          itemCount: response.length,
-          itemBuilder: (context, index) {
-            int i = response.length - index - 1;
-            final notification = response[i];
-            String formatted = DateFormat('dd/MM/yyyy hh:mm a')
-                .format(notification.createdAt.toLocal());
-            return Card(
-              color: Colors.white,
-              child: ListTile(
-                title: Text(notification.notificationTitle),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(notification.notificationBody),
-                    Text(formatted),
-                  ],
-                ),
-
-              ),
-            );
-
+        return RefreshIndicator(
+          color: const Color(0xFFDC2626),
+          onRefresh: () async {
+            await controller.fetchNotifications();
           },
+          child: ListView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding:  EdgeInsets.all(8.0),
+            itemCount: response.length,
+            itemBuilder: (context, index) {
+              int i = response.length - index - 1;
+              final notification = response[i];
+              String formatted = DateFormat('dd/MM/yyyy hh:mm a')
+                  .format(notification.createdAt.toLocal());
+              return Card(
+                color: Colors.white,
+                child: ListTile(
+                  title: Text(notification.notificationTitle),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(notification.notificationBody),
+                      Text(formatted),
+                    ],
+                  ),
+
+                ),
+              );
+
+            },
+          ),
         );
       }),
     );

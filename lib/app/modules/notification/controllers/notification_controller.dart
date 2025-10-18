@@ -17,7 +17,7 @@ class NotificationController extends GetxController {
     super.onInit();
   }
 
-  void fetchNotifications() async {
+  Future<void> fetchNotifications() async {
     try {
       isLoading.value = true;
       final fetchedNotifications = await NotificationApiService.fetchNotifications();

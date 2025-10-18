@@ -38,11 +38,16 @@ class EventView extends GetView<EventController> {
             ),
           ),
           Obx(() {
-            if (controller.allEvents.isEmpty) {
+            if(controller.isLoading.value){
+              return SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator(color: Color(0xFFDC2626),)),
+              );
+            }
+            else if (controller.allEvents.isEmpty) {
               return SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text("Event is not available"),
+                  child: Center(child: Text("Event is not available")),
                 ),
               );
             } else {

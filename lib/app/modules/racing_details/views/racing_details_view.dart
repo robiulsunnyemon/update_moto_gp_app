@@ -207,7 +207,9 @@ class RacingDetailsView extends GetView<RacingDetailsController> {
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 100),
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Color(0xFFDC2626),
+                    ),
                   ),
                 ),
               );

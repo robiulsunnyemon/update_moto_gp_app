@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:motor_sport_easy/app/api_services/contants.dart';
 import 'package:motor_sport_easy/app/shared_pref_helper/shared_pref_helper.dart';
 import '../../../routes/app_pages.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -65,7 +66,7 @@ class LoginController extends GetxController {
 
 
   Future<void> _sendFCMTokenToFastAPI(String token, String uid) async {
-    const String apiUrl = "https://motorgp-render.onrender.com/user/registration";
+    final String apiUrl = "$baseUrl/user/registration";
     print("fcm token: $token");
     try {
       final response = await http.post(

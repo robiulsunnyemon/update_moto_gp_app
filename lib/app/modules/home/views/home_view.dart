@@ -19,6 +19,7 @@ class HomeView extends GetView<HomeController> {
         title: CustomAppbarTitle(),
       ),
       body: RefreshIndicator(
+        color:  Color(0xFFDC2626),
         onRefresh: () async {
           await controller.fetchAllRaces();
         },
@@ -97,7 +98,7 @@ class HomeView extends GetView<HomeController> {
             Obx(() {
               if (controller.isLoading.value) {
                 return SliverToBoxAdapter(
-                  child: Center(child: CircularProgressIndicator()),
+                  child: Center(child: CircularProgressIndicator(color: Color(0xFFDC2626),)),
                 );
               }else if(controller.allRacesList.isEmpty){
                 return SliverToBoxAdapter(
